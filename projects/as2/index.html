@@ -1,0 +1,262 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Vis & Society Assignment 2</title>
+	<link rel="stylesheet" href="https://vis-society.github.io/assignments/report.css" />
+</head>
+
+<body>
+	<header>
+		<h1>
+			<small>Assignment 2</small>
+			Exploratory Data Analysis
+		</h1>
+
+		<p>
+			<strong>Gabriel Manso</strong> — <em>gmanso@mit.edu</em>
+		</p>
+	</header>
+	<main>
+		<section>
+			<h2>Subtheme: Housing for the Rich</h2>
+
+			<h3>Dataset: Residential sales data in the City of Boston, 2000-2023</h3>
+
+				This dataset contains all residential sales transactions in the City of Boston between 2000-2023. Includes information about the seller, buyer, price, location, whether the sale constitutes a “flip”, and much more. For this subtheme, you could look at the high end of the price points and into specific hi-rises and luxury housing (such as the Towers of Wealth). The dataset consists of 49,301 entries and 63 variables, indicating a comprehensive collection of data related to residential properties. The dataset contains a wide array of variables, including but not limited to:
+			
+				<ol>
+					<li><b>Property Details:</b> <i> address, street, proptype (property type), yearbuilt, totrooms, bathrooms, bedrooms, lotsize, style, usage.</i></li>
+					<li><b>Transaction Details:</b> <i>date, price, prsldate (previous sale date), prslpr (previous sale price), mortgage, cash_sale.</i></li>
+					<li><b>Flip Activity (indicators of property flipping):</b> <i>flip indicator, flip_horizon, and price_diff_pch (price difference percentage change).</i></li>
+					<li><b>Ownership and Purchase Behavior:</b> <i>current_owner, tot_owned (total owned by the current owner), buyer_purchases.</i></li>
+					<li><b>Investor Activity (variables indicating the type of buyer or seller):</b> <i>investor_type_purchase, inv_to_inv (investor to investor sale).</i></li>
+					<li><b>Location:</b> <i>zip, lat (latitude), lon (longitude).</i></li>
+				
+				</ol>
+
+			<h3>Overall Analysis Questions</h3>
+
+			<ol>
+				<li>What has been the average annual transaction price trend for each residence type over time?</li>
+				<br>
+				<b>Motivation:</b> Understanding the average annual price trends for residences provides insights into the housing market's overall health and trajectory. It can highlight periods of significant growth or decline, which may correspond with economic conditions, policy changes, or market shifts. This analysis is foundational for assessing affordability and the investment landscape over time. 
+				<br><br>
+				<b>Following-up Questions:</b><br><br>
+				<ul>
+					<li>What were the price fluctuations for each residency type over time?</li>
+					<li>How has the percentage of transactions exceeding the average price varied by residency type over time?</li>
+				</ul>	
+				<br>
+				
+				<li>How has the percentage of investor versus non-investor purchases varied by property type over time?</li>
+				<br>
+				<b>Motivation:</b>  Investigating the proportion of investor versus non-investor purchases across different property types offers critical insights into market composition and trends in housing investment. This analysis is essential for understanding the dynamics of speculation, investment-driven demand, and their impact on housing availability and affordability. The distinction between investor and non-investor purchases can highlight shifts in market sentiment, indicate speculative bubbles, or reveal the growing attractiveness of certain property types to investors. Given the concerns raised by both the "Towers of Wealth" article and the MAPC report regarding the role of investment activity in shaping the housing market, analyzing these proportions can provide evidence of how investment behaviors potentially exacerbate housing shortages, drive up prices, and affect the overall market. Such insights are invaluable for stakeholders aiming to develop targeted policies to encourage sustainable development, ensure a balanced housing market, and protect against the negative impacts of speculative investment. 
+				<br><br>
+				<b>Following-up Questions:</b><br><br>
+				<ul>
+					<li>What is the trend of owner-occupancy versus absentee-ism among investor purchases for different types of residential properties over time?</li>
+				</ul>	
+				<br>
+				
+				<li>What is the geographical distribution of these "investment-only" (absentee-ism) properties?</li>
+				<br>
+				<b>Motivation:</b>  Mapping the geographical distribution of investment-only properties, characterized by absentee ownership, is vital for understanding the spatial impact of investment activity on urban neighborhoods and housing markets. This analysis can reveal patterns of concentration where investment properties might be driving up prices, contributing to housing scarcity, or altering community dynamics. In the context of concerns like those raised in the "Towers of Wealth" article, identifying areas with high densities of absentee-owned properties can highlight neighborhoods at risk of gentrification, displacement, or a loss of community cohesion. Furthermore, understanding the spatial distribution of these properties can aid in assessing the effectiveness of existing housing policies and in crafting targeted interventions aimed at promoting equitable development, preserving affordable housing, and maintaining vibrant, stable communities. For urban planners, policymakers, and community organizations, such insights are crucial for balancing the benefits of investment with the need to protect the interests of local residents and ensure the sustainable growth of urban areas. 
+				<br><br>
+				<b>Following-up Questions:</b><br><br>
+				<ul>
+					<li>How did that change over time for each residency type?</li>
+				</ul>	
+			</ol>
+
+			<h3>Future Work Investigation:</h3>
+
+			<ol>
+				<li>What features define residential properties bought exclusively for investment, and what are the profiles of their purchasers?</li>
+			</ol>
+
+		</section>
+
+		<section>
+			<h2>Discoveries & Insights</h2>
+
+			<ol>
+				Let's start our examination by delving into the particulars of individual variables, scrutinizing their distributions, and tackling any data quality concerns that emerge. 
+				The dataset, as detailed in its description, is intended to encapsulate transactions exclusive to residential sales. However, my first examination revealed the 
+				inclusion of entries not limited to residential purposes, spanning categories like "commercial", "open space", and others. Our preliminary objective, therefore, was to pinpoint 
+				the variables crucial for filtering the dataset to solely include residential property transactions, followed by a thorough data cleansing process. Key resources for identifying 
+				these vital variables were the "<a href="https://homesforprofit.mapc.org/report">Homes for Profit: Speculation and Investment in Greater Boston</a>" and the 
+				"<a href="https://www.mass.gov/files/documents/2016/08/wr/classificationcodebook.pdf">DLS's Sales Report</a>". The 'usage' column, in particular, serves as a gateway 
+				to understanding the precise nature of each transaction. Our refined dataset will focus exclusively on transactions labeled as "CONDOMINIUMS", "1 FAMILY RESIDENCY", "2 FAMILY RESIDENCY", 
+				"3 FAMILY RESIDENCY", "2-5 FAMILY RESIDENCY", "APARTMENT (4-8 UNITS)", "APARTMENT (+9 UNITS)", and "OTHER RESIDENCY", the last of which encompasses any residential category not specified by 
+				the aforementioned labels.
+
+				<br><br>
+
+				Upon implementing our initial filter within the dataset, a closer inspection of the "proptype" column (indicating property type) revealed an interesting anomaly: only one entry each for "R25" 
+				(2-5 FAMILY RESIDENCY) and "REO" (OTHER RESIDENCY), alongside 160 transactions listed with a price of merely $1. Such findings are notably peculiar. Given that our exploratory data analysis (EDA) 
+				involves detailed examination and visualization for each property type, coupled with data operations utilizing the "price" variable, it becomes essential to further refine our dataset. Consequently, 
+				we will exclude these anomalous $1 transactions and adjust our filters accordingly to ensure a more accurate and meaningful analysis.
+
+				<br><br>
+
+				Having step finally done, let's finally strat diving into some visualizations! But, before jump in straight to our questions, I wanted to get a better sense of the distribution of residential transactions over time.
+			
+			</ol>
+
+			<figure>
+				<img src="images/dist_all_3.png" alt="" width="1000" height="550"/>
+				<figcaption>
+					This chart illustrates the annual number of residential property transactions from the year 2000 through 2022. The highest volume of sales occurred in 2005, where 3,110 properties were sold. 
+					Following this peak, there was a sharp decline, with the lowest point arriving in 2009, corresponding to just 1,528 sales — a likely reflection of the global financial crisis's impact on 
+					the real estate market. The subsequent years saw a recovery with some fluctuations, before declining in 2020, possibly due to the economic repercussions of the COVID-19 pandemic. 
+				</figcaption>
+			</figure>
+
+			<ol>
+				Now let's look at the same distribution, but for each property type separately:
+			</ol>
+
+			<figure>
+				<img src="images/dist_each_3.png" alt="" width="1000" height="1600"/> 
+				<figcaption>
+					The series of bar charts illustrates the transaction trends for apartments (APT), single-family (R1F), two-family (R2F), three-family (R3F) residences, and residential condominiums (RCD) 
+					in Boston from 2000 to 2022, revealing fluctuations across the board with notable declines during 
+					economic downturns, such as the 2009 financial crisis and the 2020 pandemic. Apartments and two-family homes experienced significant variability with sharp declines in 2020, 
+					suggesting pandemic-related impacts. Single-family homes showed consistent demand and resilience, while three-family homes remained a niche market with low sales volume. Condominiums, 
+					having the highest sales volume, displayed a marked recovery post-2009, yet faced a substantial dip in 2020, highlighting the sensitivity of this market segment to economic conditions.
+				</figcaption>
+			</figure>
+
+			<ol>
+				The steps already performed provided us with a fair introduction to the data. Now, let's start to narrow down things a little bit and dive in our first question: what has been the average 
+				annual transaction price trend for each residence type over time? My hope is that, by answering this question, we are going to gain some insights into the housing market's overall health 
+				and trajectory and how it varies according to different residency types. As already mentioned previously, this question could also be foundational for assessing affordability and the 
+				investment landscape over time.
+			</ol>
+
+			<figure>
+				<img src="images/avg_price_2.png" alt="" width="1000" height="600" />
+				<figcaption>
+					The chart shows that the average prices of all property types generally trend upwards over time, suggesting an overall increase in property values. However, there are noticeable 
+					fluctuations and spikes in prices for certain years and property types. For example, the APT category shows extreme peaks, possibly indicating occasional sales of exceptionally 
+					high-value apartments. The RCD line, representing condominiums, and the R1F ones show a steady increase with fewer fluctuations, which may reflect a strong and growing demand 
+					for this property type. In recent years, there's a notable uptick in the average prices of R3F properties, which initially made me believe that this could be potentially due to 
+					the increased interest in multi-family residences; however, by looking at Figure 2, we can see that the number of transactions related to R3F properties has been decreasing since 
+					2019 and is the one with fewer number of transactions which is a bit ambiguous. I also think the data presented could be instrumental for real estate investors, policymakers, and buyers 
+					in understanding market trends and making more informed decisions.
+				</figcaption>
+			</figure>
+
+			<ol>
+				The results from this chart sparked my curiosity to dig a bit deeper into this matter and take a closer look at the volatility, and the percentage of transactions that exceeded the 
+				average price for each residence type over time:
+			</ol>
+
+			<figure>
+				<img src="images/y_to_y_2.png" alt="" width="1000" height="600"  />
+				<figcaption>
+					This chart presents the annual percentage change in the average price for all studied property types. It actually shows us significant volatility, indicating substantial 
+					year-over-year variations in average prices for each property type, which was very surprising to me (I was expecting some volatility but not that much). For some years, 
+					there have been sharp increases of over 100%, particularly noticeable in the APT category, which may suggest occasional sales at much higher prices, as already previously 
+					mentioned. Conversely, there are also years where the percentage change is negative, indicating a decrease in average prices from the previous year. The lines crisscross 
+					frequently, showing that no single property type consistently leads or lags in price changes each year. The RCD line exhibits less extreme fluctuations compared to the 
+					other property types, possibly indicating a more stable market for condominiums. Meanwhile, the R1F, R2F, and R3F lines show instances of steep increases and decreases, 
+					reflecting a more dynamic market with potentially smaller sales volumes where a few high-value transactions can cause significant average price shifts.
+				</figcaption>
+			</figure>
+
+			<figure>
+				<img src="images/abv_avg_price_3.png" alt="" width="1000" height="1600" />
+				<figcaption>
+					The charts show variability in the percentage of above-average transactions across different property types and over time. For apartments (APT), the percentage of sales 
+					above the average price fluctuates significantly, with a notable peak at 60% in 2005 and another increase to 54% in 2018 (pre-COVID). The single-family residences (R1F) 
+					chart displays a more stable pattern, with percentages generally ranging between 30% and 45% throughout the years. The two-family residences (R2F) and three-family 
+					residences (R3F) charts also show fluctuations with occasional spikes. Meanwhile, the residential condominiums (RCD) chart indicates a relatively stable trend with 
+					less variability compared to the other property types, generally staying between 20% and 35%.
+				</figcaption>
+			</figure>
+
+			<ol>
+				Having delved into pricing trends and the volume of residential transactions, our next step is to broaden our analysis to the buyers' perspective. 
+			</ol>
+
+			<figure>
+				<img src="images/inv_not_inv_3.png" alt=""  width="1000" height="1600" />
+				<figcaption>
+					These charts show the percentage of investor versus non-investor purchases across different property types over time. Each bar chart is split into two colors, red 
+					for investor purchases and green for non-investor purchases, showing the proportion of each within a given year. In every property type category, the red bars 
+					(investor purchases) are consistently present, indicating that investors are active in all markets. However, the balance between investor and non-investor purchases 
+					varies by property type and over time. For instance, the APT (apartment) purchases are overwhelmingly by investors across all years, often reaching 100%. This could 
+					suggest a strong preference or profitability for investors in the apartment market. For the R1F (single-family residences), R2F (two-family residences), and R3F 
+					(three-family residences), the charts exhibit more variability between investor and non-investor purchases. In some years, non-investor purchases dominate, 
+					while in others, investor purchases take the lead, or the proportions are more balanced. The RCD (residential condominiums) chart shows a notable presence of 
+					investors but with a consistent portion of non-investor purchases as well. The percentages seem to vary less dramatically year-on-year compared to the multi-family 
+					residences, suggesting a possibly more stable investment landscape for condominiums.
+				</figcaption>
+			</figure>
+
+			<ol>	
+				In this exploratory data analysis (EDA), after reading the "background" readings, our primary focus is on the behavior of investors. This emphasis stems from the understanding that investors, with their substantial financial 
+				resources, are likely key players influencing the current real estate scenario in Boston. Consequently, we pivot to our second question: How has the balance of property purchases between 
+				investors and non-investors evolved over time, across various property types? To dissect this dynamic, we'll utilize the "current_owner" variable in the dataset. This variable aids in 
+				differentiating transactions made for occupancy from those aimed at investment. Let's delve into this data to uncover insights into these purchasing patterns.
+			</ol>
+
+			<figure>
+				<img src="images/own-abs_3.png" alt=""  width="1000" height="1600" />
+				<figcaption>
+					The bar charts in the image display the percentage of owner-occupied versus non-owner-occupied investor (absentee-ism) purchases for various property types over time. The charts 
+					reveal an underlying trend where, for most property types, there's a considerable fluctuation between owner-occupied and non-owner-occupied investor purchases year on year. 
+					However, there's a noticeable trend in condos (RCD) specifically. In the early 2000s, a significant majority of investor purchases of condos were not owner-occupied, 
+					indicating a strong trend toward absentee investment. However, over the years, there has been a visible shift, with the percentage of non-owner-occupied investor purchases 
+					decreasing and owner-occupied investor purchases increasing. This shift became particularly evident after 2010 when the trend lines crossed and owner-occupancy in investor purchases 
+					started to prevail. By 2022, the percentage of owner-occupied investor purchases in condos has increased, suggesting that more investors are choosing to live in their investment 
+					properties or that there may be a growing trend of investors purchasing condos for purposes other than renting them out, such as using them as second homes or for short-term rentals.
+				</figcaption>
+			</figure>
+
+			<figure>
+				<img src="images/heat.png" alt="" width="1000" height="400" />
+				<figcaption>
+					The analysis of the map reveals a pronounced clustering of investment properties primarily in the central and eastern sections, with downtown Boston (Back Bay, Beacon Hill) emerging 
+					as a hotspot. Areas marked in red and yellow denote a significant presence of "investment-only" residences. This pattern underscores a common urban trend where sought-after areas become 
+					hotbeds for investment, sparking issues related to affordability, displacement, and shifts in community demographics. The appeal of these locations can often be attributed to their 
+					closeness to key business districts, educational entities, and cultural attractions, positioning them as prime investment locations and possibly contributing to escalating housing prices.
+				</figcaption>
+			</figure>
+
+			<ol>	
+				With a clear understanding of where these investments are predominantly located, let's next examine how their behavior has changed over time:
+			</ol>
+
+			<figure>
+				<video width="1000" height="500" controls>
+					<source src="2000_2022.mp4">
+				</video>
+				<figcaption>
+					These charts reveal a marked decline in "investment-only" properties in Boston between 2002 and 2022, indicating substantial changes in the real estate investment sphere. 
+					This trend may suggest a consolidation within the market, with investors gravitating towards more significant holdings or shifting their focus from scattered residential 
+					investments to other types of real estate or geographical areas. Additionally, This trend could suggest a shift in real estate investment strategies, potentially indicative 
+					of a market that is increasingly catering to the affluent segment, as also suggested by the topic of this EDA. These aspects will be explored in greater depth in subsequent 
+					phases of this analysis.
+				</figcaption> 
+			</figure>
+
+		</section>
+
+		<section>
+			<h2>Summary</h2>
+
+			<ol>
+				This initial investigation of Boston's residential real estate market data has revealed several intriguing trends, particularly concerning investor activity and the nature of property ownership. One of the standout insights is the clear presence of investors across all property types, with significant fluctuations in the balance between owner-occupied and absentee (non-owner-occupied) investor purchases over the years. In recent years, there has been a notable shift in condominium investments towards owner-occupancy, suggesting a potential change in investors' strategies or preferences, possibly influenced by market forces or regulatory changes that favor living in one's investment property.
+				<br><br>
+				The trend of absentee ownership remains pronounced in the apartment (APT) market, where nearly all purchases are by investors, suggesting a strong preference for this property type among those looking for investment returns rather than personal use. This trend contrasts with the single-family (R1F), two-family (R2F), and three-family (R3F) residences, where investor purchases fluctuate more, indicating varying investor interest and possibly reflecting changing market conditions or investment opportunities over time.
+				<br><br>
+				Furthermore, as highlighted by the heat map, the geographic distribution of "investment-only" residences emphasizes that investment activity is concentrated in specific areas within Greater Boston. Areas such as central Boston show high densities of such investment properties, which could indicate a targeted approach by investors towards neighborhoods that offer higher rental demand or appreciation potential. These areas of high investment concentration could impact the local housing market, affecting affordability and availability and potentially leading to shifts in neighborhood demographics.
+				<br><br>
+				Finally, it becomes apparent that the Boston housing market exhibits complex patterns of investment behavior with varying implications across different property types and neighborhoods, and it has been facing an extremely challenging scenario. The evolving landscape of condominium ownership might reflect a broader shift in the real estate market, potentially aligning with changing investor objectives or reactions to broader economic conditions. At the same time, the concentration of investment properties in certain areas suggests a targeted approach by investors that could have significant implications for housing policy and urban planning. These were only some of the super interesting things that I was able to investigate, but I can't wait to continue this analysis throughout the semester.
+			</ol>
+		</section>
+	</main>
+</body>
+</html>

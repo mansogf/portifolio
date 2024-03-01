@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Vis & Society Assignment 3</title>
+	<link rel="stylesheet" href="https://vis-society.github.io/assignments/report.css" />
+</head>
+
+<body>
+	<header>
+		<h1>
+			<small>Assignment 3</small>
+			Visualization Design
+		</h1>
+
+		<p>
+			<strong>Gabriel Manso</strong> — <em>gmanso@mit.edu</em>
+		</p>
+	</header>
+
+	<main>
+		<section>
+			<h2>Phase One: Sketching Visualizations</h2>
+
+			<ol>
+				<h3><b>Question:</b></h3>
+
+				Are there any notable trends in the populations growth of specific gender and age groups from 1900 to 2000?
+
+			</ol>
+
+			<ol>
+
+				I chose to tackle a more <b>broader</b> question as a personal challenge, aiming to identify less apparent 
+				trends solely by analyzing population differences across gender and age. Through this exercise I aim to 
+				
+				<ul>
+					<li>1st) Explore different visualization designs that would eventually help me to get to a non-obvious finding;</li>
+					<li>2nd) Reflect on the reasons behind this "obscure" trend;</li>
+					<li>3rd) Explore, on phase two, these reasons by connecting the available dataset with other interesting data;</li>
+				</ul>
+			</ol>
+
+      		<figure>
+				<img src="images/sketch1.jpeg" alt="" width=1000/>
+				<figcaption>
+					This charts is the first visualization attempt of the U.S. population density by gender for two different years, 1900 and 2000. It's structured 
+					with two parallel axes—one for each year—stacked vertically. The top pair of bars represents the year 2000, and the bottom 
+					pair represents 1900. Each pair includes a separate bar for male and female population densities, color-coded with blue for males and red for females.
+					The bubbles on each bar correspond to specific age groups and their sizes indicate the population of that group. The larger 
+					the bubble, the higher the population density in that group.
+				</figcaption>
+			</figure>
+
+			<p>
+				Design Rationale for Sketch 1:
+			</p>
+
+			<ul>
+				Together with the idea of exploring non-obvious trends from a "simple" database, I've also challanged my self to 
+				try to create more <a href="https://www.youtube.com/watch?v=LNVxD6EhYNQ&ab_channel=WebConferencesAmsterdam">exotic</a>
+				visualizations. With that being said, I came up with this idea of having two parallel axes, one for each year, on top of
+				each other, to enable the reader to better compare the population density differences for each century. After that I needed to 
+				come up with a way to assess the population density differences for each age group and decided to do that via "bubbles". 
+				It is important to notice that, on this visualization we are exploring the feasiability of such design, and that's why we don't 
+				have all years on the horizontal axis. Aiming to facilitate the reader understanding I also thought of adding different 
+				background colors to account for each gender. To sum up, even though I thought this idea was promising initially, that it 
+				would allow some kind of population density comparison, I guess it didn't allow me to get richer insights after a better 
+				evaluation, nor make things easier for the readers. The use of bubbles made it hard to accurately assess the population 
+				density differences. I also considered annotating each bubble for clarity, but I believe focusing our efforts on exploring 
+				other design alternatives would be more beneficial, as additional labels may not significantly enhance this visualization. 
+				In the following sketch, I hope to make this comparison more accessible for the reader and allow them 
+				to get a more precise measure.	
+			</ul>
+
+      		<figure>
+				<img src="images/sketch2.jpeg" alt="" width=1000/>
+				<figcaption>
+					This chart illustrates the distribution of the U.S. population across various age groups, segmented by gender for the 
+					years 1900 and 2000. The central axis represents age groups, with textured soft blue bars indicating male population 
+					density in 1900, textured soft red bars for female population density in 1900, lighter blue bars for male population density in 2000, and 
+					red for female population density in 2000. 
+				</figcaption>
+			</figure>
+
+			<p>
+				Design Rationale for Sketch 2:
+			</p>
+
+			<ul>
+				In the development of the second design, my goal was to enhance the efficiency of comparing population densities. Consequently, I replaced the bubble 
+				visuals with bars, drawing inspiration from the well-established population pyramid design. A key modification involved relocating the traditional 
+				y-axis from the left-hand side to the center of the visualization, which I believe facilitates a more intuitive comparison between male and female 
+				populations. Additionally, I refined the vertical axis to display age groups rather than individual ages, addressing potential misinterpretations 
+				present in the initial sketch. Given the large numbers associated with population densities, I also shifted the horizontal axis to a logarithmic scale 
+				for clearer representation. Initially, tick labels were in scientific notation, but realizing this might not be accessible to all audiences, I revised 
+				them to more understandable terms like 1M and 10M, aiming to make the data more user-friendly. With the same thing in mind and thinking about a broader audience, 
+				a drawing of a girl and a boy was added to the chart. To sum up, even though I think this new design is a lot better for showing how population densities compare, 
+				it didn't really help me see anything new, just how the numbers differ for each gender and group ages across these two centuries. I also think it's a bit too dense 
+				with more than two bars showing at once, so for my next design, I want to try something simpler that doesn't need as many bars and allow me to extract a deeper
+				insight from this data.
+			</ul>
+
+      		<figure>
+				<img src="images/sketch3.jpeg" alt="" width=1000/>
+				<figcaption>
+					This chart showcases the comparative percentage growth of the male and female population across various age groups from 1900 to 2000, revealing 
+					that while both genders experienced similar growth in younger age groups, females showed a much higher growth rate in older age groups.
+				</figcaption>
+			</figure>
+ 
+			<p>
+				Design Rationale for Sketch 3:
+			</p>
+
+			<ul>
+				As previously mentioned, for my third sketch, my goal is to bring to the table any possible deeper insight that would allow the reader to 
+				go beyond the absolute population density comparison. After closely examining the data, I noticed that older age groups of females had a 
+				significantly higher growth rate than men. This sparked my curiosity, leading me to focus on this observation this time. To do this, I thought 
+				a simple bar chart would work well, but with a twist: instead of showing population density on the y-axis, it would show the percentage growth 
+				in population density since 1900. This change would allow us to notice more intuitively how much the population has grown over time, making it 
+				easier to compare the growth between men and women with the help of horizontal grid lines. To highlight the differences in growth rates between 
+				genders, especially in older age groups, I also decided to add annotations showing how much the female population grew compared to the 
+				male population. Finally, I decided to change the colors of the bars and not use blue for males and pink/red for females. This was because these 
+				colors can make people think of stereotypes about gender. Instead, I chose different colors for the chart to avoid these stereotypes and make the 
+				chart more welcoming to everyone. 
+			</ul>
+
+      <h3>Reflection</h3>
+
+      <p>
+        
+		I believe that my three sketches collectively represent an evolutionary approach to visualizing the U.S. population growth and density by gender from 1900 to 2000. 
+		However, more importantly, I think the work progression faithfully followed what was proposed at the beginning of this assignment. In my first sketch, with its more 
+		exotic and exploratory bubble design, I tried to work on a more audacious design, but it fell short of precision and comparability capabilities that would possibly 
+		allow us to answer the question proposed. The second sketch adopted a more conservative and usual approach, presenting data in a clear, comparative layout that is 
+		more readable. Even though improvements were made to prevent the reader from misinterpreting the chart message, it still did not allow us to show much more than the 
+		absolute populational density difference for each age group and gender. Finally, after carefully observing the data, an intriguing pattern emerged within the population 
+		growth dynamics of older female age groups. This intriguing pattern was precisely the insight I aimed to find. With this realization, I focused on this phenomenon in my 
+		third sketch, highlighting the percentage growth, especially the ones regarding older female age groups, with pronounced emphasis. I focused on making the visualization 
+		as clean as possible to make it easy for the reader to get the central message of the chart straight. However, this visualization leaves room for further exploration, 
+		particularly in providing context for the observed discrepancies between female and male growth rates. In the next phase of this project, I aim to delve into potential 
+		factors driving these differences, enriching the visual narrative with explanatory data. Concurrently, I will remain open to iterative enhancements, ensuring the 
+		visualization evolves to offer a more comprehensive and insightful reader experience.
+      
+	  </p>
+
+		</section>
+
+		<section>
+			<h2>Phase Two: Final Design</h2>
+
+			<figure>
+				<img src="images/final_chart_2_v2.png" alt="" width=1000/>
+				<figcaption>
+					This chart compare the staggering divergence in population growth between male and female over the 20th century, underscored by the impact of World War II 
+					and remarkable strides in female life expectancy [<a href="https://www.seniorliving.org/history/1900-2000-changes-life-expectancy-united-states/#:~:text=Women%20and%20Life%20Expectancy%3A%201900,a%20Black%20woman's%20was%2075.1.">1</a>, 
+					<a href="https://www.cdc.gov/nchs/data/nvsr/nvsr51/nvsr51_03.pdf">2</a>, <a href="https://www.usnews.com/news/national-news/slideshows/u-s-military-deaths-by-war-since-wwi">3</a>]. 
+					Although gender exists beyond a binary framework, unfortunately U.S. Census data collection practices have historically recognized only binary gender categories.
+				</figcaption>
+			</figure>
+
+		</section>
+
+		<section>
+
+			<h2>Design Process & Design Decisions</h2>
+
+			<ul>
+
+				During this part of the assignment, I chose to focus on the insights from my earlier work and, hopefully, enhance the narrative that I have been building by 
+				giving more context to the data that has been explored. Therefore, more specifically, in this visualization, I am aiming to answer the question, "Why Do Older 
+				Age Groups Show a Discrepancy Between Male and Female Growth Rates?" or, in a more catchy way for better title accessibility and storytelling, "Chronicles of a 
+				Century: Male or Female, Who Wrote the Longer Story?". <br><br>
+
+				As already mentioned, I was intrigued when I compared the growth rate difference between males and females for older ages, and this sparked my curiosity to explore 
+				some of the reasons why that was the case. This is definitely not a simple task, but I saw this exercise as an opportunity to explore at least the main reasons 
+				associated with this phenomenon. Then, before I actually started working on the visualization itself, I spent some time doing research in order to find some data 
+				that could be incorporated into the studied dataset. This led me to discover one key reason: the significant number of men lost in World War 2, with over four 
+				hundred thousand deaths. In parallel, I also found women's deaths in the military represented only 1% of total war deaths [<a href="https://americansoldierww2.org/topics/women-and-gender">4</a>]. 
+				Additionally, women's life expectancy has greatly increased from 1900 to 2000 [<a href="https://www.seniorliving.org/history/1900-2000-changes-life-expectancy-united-states/#:~:text=Women%20and%20Life%20Expectancy%3A%201900,a%20Black%20woman's%20was%2075.1.">1</a>], 
+				and by 2000, women were 18% more likely than men to reach their 50s [<a href="https://www.cdc.gov/nchs/data/nvsr/nvsr51/nvsr51_03.pdf">2</a>]. <br><br>
+
+				After investing some time researching, I found that highlighting the age groups of men most affected by the war with a distinct background could possibly best 
+				emphasize the war's impact on their growth rates, so that is what I did. However, using the same design as my third sketch, with bars side by side, wouldn't 
+				effectively highlight the data associated with a specific gender.  So, I decided to create an alternative version of the "population pyramid" that would help me 
+				overcome this issue.  In this new version, I am showing the population density growth rates as percentages on the x-axis instead of the absolute population size. 
+				I also centered the age groups on the y-axis, an idea I had during the design of my second sketch, to simplify reading the chart without needing to switch focus between sides.
+				
+				<br><br>
+				
+				Besides these, below you can find further details on the design choices made:
+
+				<ul>
+					<li>The percentage intervals on the axis were intentionally set to highlight that the growth rates for older female age groups sometimes doubled those of males, making bar comparisons more effective;</li>
+					<li>Age groups are arranged in descending order to draw more focus to the older age groups, which are central to the narrative;</li>
+					<li>Increased transparency was used to harmonize colors, grid lines, and callouts with the overall chart design;</li>
+					<li>To get to the final result the raw datase was filtered for 1900 and 2000, merged on 'Age' and 'Sex', then I needed to calculate the population growth rates, and invert the male growth rates for left-side plotting;</li>
+				</ul>
+
+				<br>
+
+				In summary, I'm very satisfied with how the chart turned out, as it effectively communicates the key message I aimed to convey. However, it's important to acknowledge that due to data limitations and time constraints, 
+				my analysis only scratches the surface of the historical events that significantly impacted male population growth. Events like premature deaths in the late 1920s and the Great Depression between 1929 and 1939 are other 
+				critical factors that contributed to this trend and would make excellent subjects for future research [<a href="https://www.seniorliving.org/history/1900-2000-changes-life-expectancy-united-states/#:~:text=Women%20and%20Life%20Expectancy%3A%201900,a%20Black%20woman's%20was%2075.1.">1</a>].
+				
+			</ul>
+
+      <h3>Final Reflection</h3>
+
+	  <p>
+		The initial phase of the assignment proved to be invaluable throughout the entire design process, significantly contributing to reaching the objectives I set at the start. 
+		This phase facilitated a deep dive into various visualization designs, enabling me to contemplate each decision, evaluate and discard ineffective approaches, and encouraged me to be 
+		increasingly creative and bold with each new design iteration. I made a concerted effort to ensure this process was constructive, and I am truly pleased with the outcome. Moving forward, 
+		I intend to consistently apply these steps, aiming to continuously enhance my approach to design and analysis, further refining my ability to convey complex data in an accessible and insightful manner. 
+		This methodology not only improves the end product but also enriches my understanding and skill set, paving the way for even more sophisticated and effective visual storytelling.
+	  </p>
+
+	  <h3>Appendix</h3>
+
+	  Below you can find other versions of the final design presented in "Phase Two":
+
+		<figure>
+			<img src="images/final_chart.png" alt="" width=1000/>
+	  	</figure>
+
+	  	<figure>
+			<img src="images/final_chart_2_v1.png" alt="" width=1000/>
+	  	</figure>
+
+		</section>
+	</main>
+</body>
+</html>
